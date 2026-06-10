@@ -1,0 +1,14 @@
+body {
+    background: linear-gradient(120deg, #667eea, #764ba2);
+    height: 100vh;
+}
+
+.auth-card {
+    max-width: 420px;
+    margin: 80px auto;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+}

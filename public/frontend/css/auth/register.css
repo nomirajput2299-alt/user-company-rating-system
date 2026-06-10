@@ -1,0 +1,15 @@
+ body {
+            background: linear-gradient(120deg, #43cea2, #185a9d);
+            height: 100vh;
+        }
+        .auth-card {
+            max-width: 450px;
+            margin: 50px auto;
+        }
+        .card {
+            border: none;
+            border-radius: 12px;
+        }
+        .input-group-text {
+            cursor: pointer;
+        }

@@ -1,0 +1,16 @@
+#wrapper {
+    display: flex;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+}
+
+.list-group-item {
+    border: none;
+    padding: 12px 20px;
+}
+
+.list-group-item:hover {
+    background: #1f2937 !important;
+}
