@@ -6,11 +6,11 @@
 
     <div class="list-group list-group-flush">
         <!-- Dashboard -->
-        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+        <a href="{{ route('backend.dashboard.index') }}" class="list-group-item list-group-item-action bg-dark text-white">
             <i class="bi bi-speedometer2 me-2"></i> Dashboard
         </a>
         <!-- Users -->
-        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+        <a href="{{ route('admin.user.index') }}" class="list-group-item list-group-item-action bg-dark text-white">
             <i class="bi bi-people me-2"></i> Users
         </a>
         <!-- Companies -->
