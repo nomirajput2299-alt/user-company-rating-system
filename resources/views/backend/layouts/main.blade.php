@@ -13,6 +13,8 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
+    <link rel="icon" type="image/png" href="{{ asset('frontend/assets/images/favicon/image.png') }}">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
     <style>
@@ -64,7 +66,7 @@
 
     <script src="{{ asset('frontend/assets/js/jquery-4.0.0.min.js') }}"></script>
     <!-- Custom JS -->
-    <script src="{{ asset('backend/js/app.js') }}"></script>
+    {{-- <script src="{{ asset('backend/js/app.js') }}"></script> --}}
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
