@@ -133,8 +133,8 @@
                     <!-- /.... Status -->
 
                     <!-- Action Button -->
-                    <div class="d-flex justify-content-between mb-2">
-                        <button type="reset" class="btn btn-info">Reset</button>
+                    <div class="d-flex justify-content-end mb-2">
+                        <button type="reset" class="btn btn-info me-2">Reset</button>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </form>

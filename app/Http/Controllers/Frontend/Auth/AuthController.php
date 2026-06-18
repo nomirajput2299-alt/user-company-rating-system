@@ -45,6 +45,12 @@ class AuthController extends Controller
 
             $request->session()->regenerate();
             $user = Auth::user();
+
+             if(!$user->status){
+                Auth::logout();
+                return redirect()->route('web.auth.login')->with('error', 'Your account is inactive. Please Contact Administrator');
+            }
+
             if ($user->hasRole('admin')) {
                 return redirect()->route('backend.dashboard.index')->with('success', 'Welcome Admin.');
             }

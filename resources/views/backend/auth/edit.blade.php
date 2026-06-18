@@ -151,8 +151,8 @@
                     <!-- /.... Status -->
 
                     <!-- Action Button -->
-                    <div class="d-flex justify-content-between mb-2">
-                        <button type="reset" class="btn btn-info">Reset</button>
+                    <div class="d-flex justify-content-end mb-2">
+                        <a href="{{ route('admin.user.index') }}" class="btn btn-info me-2">Cancel</a>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>

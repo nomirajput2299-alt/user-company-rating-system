@@ -18,7 +18,6 @@ class DashboardController extends Controller
     {
         try {
             $totalUsers = User::count();
-            // dd($totalUsers);
 
             return view('backend.index', with([
                 'totalUsers' => $totalUsers
