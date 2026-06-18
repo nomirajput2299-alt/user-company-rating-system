@@ -48,7 +48,7 @@ Route::prefix('/')->group(function () {
 | Backend Routes
 |--------------------------------------------------------------------------
 */
-Route::middleware('auth')->prefix('/back-end')->group(function () {
+Route::middleware(['auth', 'user.status'])->prefix('/back-end')->group(function () {
     /*
     |--------------------------------------------------------------------------
     | Dashboard Routes
@@ -57,22 +57,29 @@ Route::middleware('auth')->prefix('/back-end')->group(function () {
     Route::prefix('/dashboard')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('backend.dashboard.index');
     });
-    /*
+
+    Route::middleware(['role:admin'])->prefix('/admin')->group(function () {
+        /*
     |--------------------------------------------------------------------------
     | User listing Routes
     |--------------------------------------------------------------------------
     */
-    Route::prefix('/users')->group(function () {
-        Route::get('/index', [AdminAuthController::class, 'index'])->name('admin.user.index');
-        Route::get('/view/{userId}', [AdminAuthController::class, 'view'])->name('admin.user.view');
-        Route::get('/create', [AdminAuthController::class, 'create'])->name('admin.user.create');
-        Route::post('/store', [AdminAuthController::class, 'store'])->name('admin.user.store');
-        Route::get('/edit/{userId}', [AdminAuthController::class, 'edit'])->name('admin.user.edit');
-        Route::put('/update',[AdminAuthController::class, 'update'])->name('admin.user.update');
-        Route::post('/toggle-status/{userId}', [AdminAuthController::class, 'toggleStatus'])->name('admin.user.toggleStatus');
-        Route::put('/change-role',[AdminAuthController::class, 'changeRole'])->name('admin.user.changeRole');
-        Route::delete('/delete/{userId}',[AdminAuthController::class, 'delete'])->name('admin.user.delete');
+        Route::prefix('/users')->group(function () {
+            Route::get('/index', [AdminAuthController::class, 'index'])->name('admin.user.index');
+            Route::get('/view/{userId}', [AdminAuthController::class, 'view'])->name('admin.user.view');
+            Route::get('/create', [AdminAuthController::class, 'create'])->name('admin.user.create');
+            Route::post('/store', [AdminAuthController::class, 'store'])->name('admin.user.store');
+            Route::get('/edit/{userId}', [AdminAuthController::class, 'edit'])->name('admin.user.edit');
+            Route::put('/update', [AdminAuthController::class, 'update'])->name('admin.user.update');
+            Route::post('/toggle-status/{userId}', [AdminAuthController::class, 'toggleStatus'])->name('admin.user.toggleStatus');
+            Route::put('/change-role', [AdminAuthController::class, 'changeRole'])->name('admin.user.changeRole');
+            Route::delete('/delete/{userId}', [AdminAuthController::class, 'delete'])->name('admin.user.delete');
+        });
     });
+
+
+
+    Route::middleware([])->prefix('/user')->group(function () {});
 });
 
 

@@ -309,7 +309,7 @@ class AdminAuthController extends Controller
     }
 
     /**
-     * Undocumented function
+     * Change role of user of admin side
      *
      * @param Request $request
      * @return void
@@ -364,6 +364,12 @@ class AdminAuthController extends Controller
         }
     }
 
+    /**
+     * Delete user of admin side
+     *
+     * @param integer $userId
+     * @return void
+     */
     public function delete($userId)
     {
         try {
