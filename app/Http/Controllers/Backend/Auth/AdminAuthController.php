@@ -113,13 +113,13 @@ class AdminAuthController extends Controller
 
             // Toggle the status
             $user->update([
-                'status' => (!$user->status),
+                'status' => !($user->status),
             ]);
 
             DB::commit();
             return response()->json([
                 'status' => true,
-                'message' => 'User status updated now.'
+                'message' => 'User status Successfully updated now.'
             ], JsonResponse::HTTP_OK);
         } catch (Exception $e) {
             DB::rollBack();
@@ -318,7 +318,6 @@ class AdminAuthController extends Controller
     {
         try {
             DB::beginTransaction();
-            // dd($request->all());
             $newRole = $request->newRole;
             //  Check that select role is valid or not
             $role = Role::where('name', $newRole)->first();
@@ -347,9 +346,6 @@ class AdminAuthController extends Controller
             //Assign Role Spatie
             $user->syncRoles($request->newRole);
 
-
-            // dd($request->all());
-
             DB::commit();
             return response()->json([
                 'status' => true,
@@ -375,17 +371,17 @@ class AdminAuthController extends Controller
         try {
             DB::beginTransaction();
             $user = User::find($userId);
-            if(! $user){
+            if (! $user) {
                 throw new ErrorException('Invalid user. Kindly try again with valid user.');
-                }
-             $ownerEmail = 'admin@example.com';
-             if($user->email == $ownerEmail){
+            }
+            $ownerEmail = 'admin@example.com';
+            if ($user->email == $ownerEmail) {
                 throw new ErrorException('You are not allowed to delete the owner account.');
-             }
+            }
 
-             $user->delete();
-            //  dd($user);
-             DB::commit();
+            $user->delete();
+
+            DB::commit();
             return response()->json([
                 'status' => true,
                 'message' => 'User account successfully deleted now.',

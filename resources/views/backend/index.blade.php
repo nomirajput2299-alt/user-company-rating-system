@@ -18,7 +18,7 @@
                 <div class="card shadow-sm border-0">
                     <div class="card-body">
                         <h6 class="text-muted">Total Companies</h6>
-                        <h3>#</h3>
+                        <h3 class="counter" data-target="{{ $totalCompanies }}">0</h3>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
             <div class="card shadow-sm border-0">
                 <div class="card-body">
                     <h6 class="text-muted">My Companies</h6>
-                    <h3>#</h3>
+                    <h3 class="counter" data-target="{{ $myCompanies }}">0</h3>
                 </div>
             </div>
         </div>

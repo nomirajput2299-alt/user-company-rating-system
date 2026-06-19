@@ -18,7 +18,7 @@
         @endrole
 
         <!-- Companies -->
-        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+        <a href="{{ route('admin.company.index') }}" class="list-group-item list-group-item-action bg-dark text-white">
             <i class="bi bi-building me-2"></i> Companies
         </a>
         <!-- Companies -->

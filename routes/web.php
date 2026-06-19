@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\Admin\Company\AdminCompanyController;
 use App\Http\Controllers\Backend\Auth\AdminAuthController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Frontend\Auth\AuthController;
@@ -58,12 +59,17 @@ Route::middleware(['auth', 'user.status'])->prefix('/back-end')->group(function 
         Route::get('/', [DashboardController::class, 'index'])->name('backend.dashboard.index');
     });
 
-    Route::middleware(['role:admin'])->prefix('/admin')->group(function () {
-        /*
+    /*
     |--------------------------------------------------------------------------
-    | User listing Routes
+    | Admin Routes
     |--------------------------------------------------------------------------
     */
+    Route::middleware(['role:admin'])->prefix('/admin')->group(function () {
+        /*
+        |--------------------------------------------------------------------------
+        | User Routes
+        |--------------------------------------------------------------------------
+        */
         Route::prefix('/users')->group(function () {
             Route::get('/index', [AdminAuthController::class, 'index'])->name('admin.user.index');
             Route::get('/view/{userId}', [AdminAuthController::class, 'view'])->name('admin.user.view');
@@ -75,10 +81,29 @@ Route::middleware(['auth', 'user.status'])->prefix('/back-end')->group(function 
             Route::put('/change-role', [AdminAuthController::class, 'changeRole'])->name('admin.user.changeRole');
             Route::delete('/delete/{userId}', [AdminAuthController::class, 'delete'])->name('admin.user.delete');
         });
+
+        /*
+        |--------------------------------------------------------------------------
+        | Company Routes
+        |--------------------------------------------------------------------------
+        */
+        Route::prefix('/company')->group(function () {
+            Route::get('/index', [AdminCompanyController::class, 'index'])->name('admin.company.index');
+            Route::get('/view/{companyId}', [AdminCompanyController::class, 'view'])->name('admin.company.view');
+            Route::get('/create', [AdminCompanyController::class, 'create'])->name('admin.company.create');
+            Route::post('/store', [AdminCompanyController::class, 'store'])->name('admin.company.store');
+            Route::get('/edit/{companyId}', [AdminCompanyController::class, 'edit'])->name('admin.company.edit');
+            Route::put('/update', [AdminCompanyController::class, 'update'])->name('admin.company.update');
+            Route::post('/toggle-status/{companyId}', [AdminCompanyController::class, 'toggleStatus'])->name('admin.company.toggleStatus');
+            Route::delete('/delete/{companyId}', [AdminCompanyController::class, 'delete'])->name('admin.company.delete');
+        });
     });
 
-
-
+    /*
+    |--------------------------------------------------------------------------
+    | User Routes
+    |--------------------------------------------------------------------------
+    */
     Route::middleware([])->prefix('/user')->group(function () {});
 });
 
