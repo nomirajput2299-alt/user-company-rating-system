@@ -1,10 +1,11 @@
 $(document).ready(function () {
     // -- Load the Data list --
-    var table = $("#userTable").DataTable({
+    var table = $("#companyTable").DataTable({
         processing: true,
         serverSide: true,
         ajax: listUrl,
 
+        order: [[0, "desc"]], // Order by ID DESC
         columns: [
             {
                 data: "id",
@@ -15,16 +16,20 @@ $(document).ready(function () {
                 name: "name",
             },
             {
+                data: "initial",
+                name: "initial",
+            },
+            {
+                data: "userName",
+                name: "userName",
+            },
+            {
                 data: "phoneNumber",
                 name: "phoneNumber",
             },
             {
-                data: "avatar",
-                name: "avatar",
-            },
-            {
-                data: "roles",
-                name: "roles",
+                data: "city",
+                name: "city",
             },
             {
                 data: "status",
@@ -97,65 +102,7 @@ $(document).ready(function () {
         });
     });
 
-    // -- Toggle Role --
-    $(document).on("focus", ".user-role", function () {
-        $(this).data("previous", $(this).val());
-    });
-
-    // Change role
-    $(document).on("change", ".user-role", function () {
-        let select = $(this);
-        let userId = select.data("id");
-        let newRole = select.val();
-        let oldRole = select.data("previous");
-
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You want to change user role!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, change it!",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    url: changeRoleUrl,
-                    type: "PUT",
-                    data: {
-                        _token: globalCsrf,
-                        userId: userId,
-                        newRole: newRole,
-                    },
-                    success: function (response) {
-                        if (response.status) {
-                            Swal.fire("Updated!", response.message, "success");
-                            select.data("previous", newRole);
-                        } else {
-                            select.val(oldRole);
-                            Swal.fire("Error!", response.message, "error");
-                        }
-                    },
-                    error: function (xhr) {
-                        select.val(oldRole);
-
-                        let message = "Something went wrong.";
-
-                        if (xhr.responseJSON?.message) {
-                            message = xhr.responseJSON.message;
-                        }
-
-                        Swal.fire("Error!", message, "error");
-                    },
-                });
-            } else {
-                // Revert dropdown value on cancel
-                select.val(oldRole);
-            }
-        });
-    });
-
-    // -- Delete --
+     // -- Delete --
     $(document).on("click", ".delete", function () {
         let url = $(this).data("action");
 
@@ -182,7 +129,7 @@ $(document).ready(function () {
                             Swal.fire("Error!", response.message, "error");
                         }
                         // Refresh DataTable
-                        $("#userTable").DataTable().ajax.reload(null, false);
+                        $("#companyTable").DataTable().ajax.reload(null, false);
                     },
                     error: function (xhr) {
                         console.log(xhr);
@@ -196,7 +143,7 @@ $(document).ready(function () {
                             }
                         }
                         Swal.fire("Error!", message, "error");
-                        $("#userTable").DataTable().ajax.reload(null, false);
+                        $("#companyTable").DataTable().ajax.reload(null, false);
                     },
                 });
             }

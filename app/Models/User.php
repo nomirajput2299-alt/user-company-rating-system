@@ -50,4 +50,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get all companies created by the user.
+     *
+     * Relationship:
+     * One User can create multiple Companies.
+     */
+    public function companies()
+    {
+        return $this->hasMany(Company::class, 'userId');
+    }
 }
