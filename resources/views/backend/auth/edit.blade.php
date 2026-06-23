@@ -167,5 +167,9 @@
     <!-- JQuery Validation Cdn file -->
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
 
+    <!-- External Script  -->
     <script type="text/javascript" src="{{ asset('backend/js/auth/edit.js') }}"></script>
+
+    <!--- Script for Status Toggle button --->
+    <script type="text/javascript" src="{{ asset('backend/js/common/statusToggle.js') }}"></script>
 @endpush

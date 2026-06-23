@@ -56,7 +56,7 @@ $(document).ready(function () {
 
         Swal.fire({
             title: "Are you sure?",
-            text: "You want to change user status!",
+            text: "You want to change company status!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -108,7 +108,7 @@ $(document).ready(function () {
 
         Swal.fire({
             title: "Are you sure?",
-            text: "You want to delete this user!!",
+            text: "You want to delete this company!!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",

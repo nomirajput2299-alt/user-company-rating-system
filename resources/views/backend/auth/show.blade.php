@@ -91,14 +91,6 @@
                             class="text-dark small">{{ $user->created_at ? $user->created_at->format('d M Y, g:i A') : '—' }}</span>
                     </div>
                     <!-- /.... Created On -->
-
-                    <!-- Last Updated -->
-                    <div class="d-flex justify-content-between align-items-center py-2">
-                        <span class="text-muted fw-medium">Last Updated</span>
-                        <span
-                            class="text-dark small">{{ $user->updated_at ? $user->updated_at->format('d M Y, g:i A') : '—' }}</span>
-                    </div>
-                    <!-- /.... Last Updated -->
                 </div>
             </div>
             <!-- /... End of Card Body --->
