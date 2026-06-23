@@ -10,7 +10,7 @@
             <!-- Card Header -->
             <div class="card-header bg-white border-bottom-0 d-flex justify-content-between align-items-center pt-4 px-4">
                 <h5 class="mb-0 fw-bold text-dark">Company Profile</h5>
-                <a href="{{ route('admin.user.index') }}" class="btn btn-outline-secondary btn-sm rounded-pill">
+                <a href="{{ route('admin.company.index') }}" class="btn btn-outline-secondary btn-sm rounded-pill">
                     ← Back
                 </a>
             </div>
@@ -58,7 +58,7 @@
                     <!-- initial -->
                     <div>
                         <div class="d-flex align-items-center justify-content-center rounded-circle"
-                            style=" width:70px; height:70px; background-color: {{ $randomColor['bg'] }}; border:2px solid {{ $randomColor['border'] }};">
+                            style=" width:90px; height:90px; background-color: {{ $randomColor['bg'] }}; border:2px solid {{ $randomColor['border'] }};">
                             <h3 class="text-white mb-0">
                                 {{ strtoupper($company->initial) }}
                             </h3>

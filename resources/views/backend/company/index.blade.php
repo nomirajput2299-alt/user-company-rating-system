@@ -1,5 +1,5 @@
 @extends('backend.layouts.main')
-@section('title', 'Company - Details')
+@section('title', 'Company - index')
 @push('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
 
@@ -11,7 +11,7 @@
     <div class="card border-0 shadow-sm rounded-4">
         <div class="card-header bg-transparent border-0 pt-4 px-4 d-flex justify-content-between align-items-center">
             <h5 class="card-title mb-0 fw-bold text-secondary">Company Management</h5>
-            <a href="#" class="btn btn-primary rounded-3 px-3 d-flex align-items-center gap-2">
+            <a href="{{ route('admin.company.create') }}" class="btn btn-primary rounded-3 px-3 d-flex align-items-center gap-2">
                 <i class="bi bi-plus-lg"></i> Add New Company
             </a>
         </div>

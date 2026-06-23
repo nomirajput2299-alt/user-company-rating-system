@@ -1,9 +1,3 @@
-document.getElementById("status").addEventListener("change", function () {
-    document.getElementById("statusLabel").textContent = this.checked
-        ? "Active"
-        : "Inactive";
-});
-
 $(document).ready(function () {
     window.togglePassword = function (fieldId, icon) {
         let input = $("#" + fieldId);
@@ -71,7 +65,6 @@ $(document).ready(function () {
             },
             roles: {
                 required: true,
-
             },
             password: {
                 required: true,
@@ -99,7 +92,7 @@ $(document).ready(function () {
                 imageExtension: "Only jpg, jpeg, png files are allowed.",
                 maxFileSize: "Image size must not exceed 2MB.",
             },
-             roles: {
+            roles: {
                 required: "Role is required",
             },
             password: {

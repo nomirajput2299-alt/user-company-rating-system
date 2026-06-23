@@ -1,5 +1,5 @@
 @extends('backend.layouts.main')
-@section('title', 'User - Create')
+@section('title', 'Create - Company')
 @push('styles')
 @endpush
 @section('content')
@@ -9,8 +9,8 @@
         <div class="card shadow-sm border-0 rounded-4">
             <!-- Card Header -->
             <div class="card-header bg-white border-bottom-0 d-flex justify-content-between align-items-center pt-4 px-4">
-                <h5 class="mb-0 fw-bold text-dark">User - Create</h5>
-                <a href="{{ route('admin.user.index') }}" class="btn btn-outline-secondary btn-sm rounded-pill">
+                <h5 class="mb-0 fw-bold text-dark">Create - Company</h5>
+                <a href="{{ route('admin.company.index') }}" class="btn btn-outline-secondary btn-sm rounded-pill">
                     ← Back
                 </a>
             </div>
@@ -18,12 +18,12 @@
 
             <!-- Card Body -->
             <div class="card-body px-4 pb-4">
-                <form action="{{ route('admin.user.store') }}" method="POST" enctype="multipart/form-data" id="createForm">
+                <form action="{{ route('admin.company.store') }}" method="POST" id="createForm">
                     @csrf
                     <!-- Name -->
                     <div class="form-row mb-2">
-                        <label for="name">Name:</label>
-                        <input type="text" name="name" id="name" placeholder="Enter your name"
+                        <label for="name">Name Company:</label>
+                        <input type="text" name="name" id="name" placeholder="Company name"
                             value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror">
                         @error('name')
                             <small class="text-danger">{{ $message }}</small>
@@ -33,8 +33,8 @@
 
                     <!-- Email -->
                     <div class="form-row mb-2">
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" id="email" placeholder="Enter your email"
+                        <label for="email">Email Company:</label>
+                        <input type="text" name="email" id="email" placeholder="Company email"
                             value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror">
                         @error('email')
                             <small class="text-danger">{{ $message }}</small>
@@ -44,8 +44,8 @@
 
                     <!-- Phone Number -->
                     <div class="form-row mb-2">
-                        <label for="phoneNumber">Phone Number:</label>
-                        <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Enter your phone number"
+                        <label for="phoneNumber">Company Phone Number:</label>
+                        <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Company phone number"
                             value="{{ old('phoneNumber') }}"
                             class="form-control @error('phoneNumber') is-invalid @enderror">
                         @error('phoneNumber')
@@ -54,65 +54,27 @@
                     </div>
                     <!-- /.... Phone Number -->
 
-                    <!-- Avatar -->
+                    <!-- Description -->
                     <div class="form-row mb-2">
-                        <label for="avatar">Avatar:</label>
-                        <input type="file" name="avatar" id="avatar" accept="image/*"
-                            class="form-control @error('avatar') is-invalid @enderror">
-                        @error('avatar')
+                        <label for="description">Description:</label>
+                        <textarea name="description" id="description" cols="30" rows="5" placeholder="Company description"
+                            class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
+                        @error('description')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
-                    <!-- Avatar -->
+                    <!-- /.... Description -->
 
-                    <!-- Role -->
-                    <div class="mb-2">
-                        <label for="">Role</label>
-                        <select name="roles" id="roles" class="form-control @error('roles') is-invalid @enderror">
-                            <option value="" selected disabled>Select Role</option>
-                            @foreach ($roles as $role)
-                                <option value="{{ $role->name }}" {{ old('roles') == $role->name ? 'selected' : '' }}>
-                                    {{ ucfirst($role->name) }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('roles')
+                    <!-- City  -->
+                    <div class="form-row mb-2">
+                        <label for="city">City:</label>
+                        <input type="text" name="city" id="city" placeholder="Company city"
+                            value="{{ old('city') }}" class="form-control @error('city') is-invalid @enderror">
+                        @error('city')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
-                    <!-- /.... Role -->
-
-                    <!-- Password -->
-                    <div class="mb-2">
-                        <label>Password</label>
-                        <div class="input-group">
-                            <input type="password" id="password" name="password"
-                                class="form-control @error('password') is-invalid @enderror">
-                            <span class="input-group-text" onclick="togglePassword('password', this)">
-                                <i class="bi bi-eye"></i>
-                            </span>
-                        </div>
-                        @error('password')
-                            <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
-                    <!-- Password -->
-
-                    <!-- Confirm Password -->
-                    <div class="mb-2">
-                        <label>Confirm Password</label>
-                        <div class="input-group">
-                            <input type="password" id="password_confirmation" name="password_confirmation"
-                                class="form-control @error('password_confirmation') is-invalid @enderror">
-                            <span class="input-group-text" onclick="togglePassword('password_confirmation', this)">
-                                <i class="bi bi-eye"></i>
-                            </span>
-                        </div>
-                        @error('password_confirmation')
-                            <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
-                    <!-- /.... Confirm Password -->
+                    <!-- /.... City -->
 
                     <!-- Status -->
                     <div class="mb-2">
@@ -134,7 +96,7 @@
 
                     <!-- Action Button -->
                     <div class="d-flex justify-content-end mb-2">
-                        <button type="reset" class="btn btn-info me-2">Reset</button>
+                        <a href="{{ route('admin.company.index') }}" class="btn btn-info me-2">Cancel</a>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </form>
@@ -150,7 +112,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
 
     <!-- External Script  -->
-    <script type="text/javascript" src="{{ asset('backend/js/auth/create.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('backend/js/admin/company/create.js') }}"></script>
 
     <!--- script for Status Toggle button --->
     <script type="text/javascript" src="{{ asset('backend/js/common/statusToggle.js') }}"></script>
