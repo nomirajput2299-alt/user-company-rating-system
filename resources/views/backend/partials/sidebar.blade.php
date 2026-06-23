@@ -15,12 +15,20 @@
         <a href="{{ route('admin.user.index') }}" class="list-group-item list-group-item-action bg-dark text-white">
             <i class="bi bi-people me-2"></i> Users
         </a>
-        @endrole
 
         <!-- Companies -->
         <a href="{{ route('admin.company.index') }}" class="list-group-item list-group-item-action bg-dark text-white">
             <i class="bi bi-building me-2"></i> Companies
         </a>
+        @endrole
+
+        @role('user')
+         <!-- Companies -->
+        <a href="{{ route('user.company.index') }}" class="list-group-item list-group-item-action bg-dark text-white">
+            <i class="bi bi-building me-2"></i> Companies
+        </a>
+        @endrole
+
         <!-- Companies -->
         <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
             <i class="bi bi-star me-2"></i> Ratings

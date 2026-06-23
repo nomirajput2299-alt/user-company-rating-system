@@ -73,7 +73,7 @@ class AdminCompanyController extends Controller
                     ->make(true);
             }
 
-            return view('backend.company.index');
+            return view('backend.admin.company.index');
         } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
@@ -129,7 +129,7 @@ class AdminCompanyController extends Controller
                 throw new Exception("Invalid Company. Kindly try again with valid Company");
             }
 
-            return view('backend.company.show')->with([
+            return view('backend.admin.company.show')->with([
                 'company' => $company,
             ]);
         } catch (Exception $e) {
@@ -145,7 +145,7 @@ class AdminCompanyController extends Controller
     public function create()
     {
         try {
-            return view('backend.company.create');
+            return view('backend.admin.company.create');
         } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
@@ -207,7 +207,7 @@ class AdminCompanyController extends Controller
             if (!$company) {
                 throw new Exception('Invalid Company. Kindly try again with valid Company');
             }
-            return view('backend.company.edit')->with([
+            return view('backend.admin.company.edit')->with([
                 'company' => $company,
             ]);
         } catch (Exception $e) {

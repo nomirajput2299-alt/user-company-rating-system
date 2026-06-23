@@ -86,7 +86,7 @@ class AdminAuthController extends Controller
                     ->rawColumns(['name', 'phoneNumber', 'avatar', 'status', 'action', 'created_at', 'roles'])
                     ->make(true);
             }
-            return view('backend.auth.index');
+            return view('backend.admin.auth.index');
         } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
@@ -143,7 +143,7 @@ class AdminAuthController extends Controller
             if (!$user) {
                 throw new ErrorException('Invalid user. Kindly try again with valid user.');
             }
-            return view('backend.auth.show')->with([
+            return view('backend.admin.auth.show')->with([
                 'user' => $user,
             ]);
         } catch (Exception $e) {
@@ -170,7 +170,7 @@ class AdminAuthController extends Controller
                 throw new ErrorException('This owner email you can not edit this.');
             }
 
-            return view('backend.auth.edit')->with([
+            return view('backend.admin.auth.edit')->with([
                 'user' => $user,
                 'roles' => $roles,
             ]);
@@ -250,7 +250,7 @@ class AdminAuthController extends Controller
             $roles = Role::all();
 
             DB::commit();
-            return view('backend.auth.create')->with([
+            return view('backend.admin.auth.create')->with([
                 'roles' => $roles,
             ]);
         } catch (Exception $e) {
