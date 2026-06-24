@@ -10,7 +10,8 @@
             <!-- Card Header -->
             <div class="card-header bg-white border-bottom-0 d-flex justify-content-between align-items-center pt-4 px-4">
                 <h5 class="mb-0 fw-bold text-dark">Company Profile</h5>
-                <a href="{{ route('admin.company.index') }}" class="btn btn-outline-secondary btn-sm rounded-pill">
+                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.company.index') : route('user.company.index') }}"
+                    class="btn btn-outline-secondary btn-sm rounded-pill">
                     ← Back
                 </a>
             </div>
@@ -18,29 +19,6 @@
 
             <!-- Card Body -->
             <div class="card-body px-4 pb-4">
-                {{-- <div class="d-flex align-items-center gap-4 mb-4 pb-4 border-bottom">
-                    <!-- initial -->
-                    <div>
-                        <h3>{{ $company->initial }}</h3>
-                    </div>
-
-                    <!-- /.... Name, Email & Status -->
-                    <div>
-                        <h4 class="mb-1 fw-bold text-dark">{{ $company->name }}</h4>
-                        <p class="text-muted mb-2 small"><i class="bi bi-envelope me-1"></i> {{ $company->email }}</p>
-                        <div class="d-flex gap-2">
-                            @if ($company->status)
-                                <span
-                                    class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1.5">Active</span>
-                            @else
-                                <span
-                                    class="badge rounded-pill bg-danger-subtle text-danger border border-danger-subtle px-3 py-1.5">Inactive</span>
-                            @endif
-                        </div>
-                    </div>
-                    <!-- /.... Name, Email & Status -->
-                </div> --}}
-
                 @php
                     // Random colors array
                     $colors = [
