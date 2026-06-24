@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\Admin\Company\AdminCompanyController;
 use App\Http\Controllers\Backend\Auth\AdminAuthController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\User\Comapny\UserCompanyController;
 use App\Http\Controllers\Frontend\Auth\AuthController;
 use App\Http\Controllers\Frontend\WebHomeController;
 use Illuminate\Support\Facades\Route;
@@ -104,7 +105,24 @@ Route::middleware(['auth', 'user.status'])->prefix('/back-end')->group(function 
     | User Routes
     |--------------------------------------------------------------------------
     */
-    Route::middleware([])->prefix('/user')->group(function () {});
+    Route::middleware(['role:user'])->prefix('/user')->group(function () {
+
+        /*
+        |--------------------------------------------------------------------------
+        | Company Routes
+        |--------------------------------------------------------------------------
+        */
+        Route::prefix('/company')->group(function () {
+            Route::get('/index', [UserCompanyController::class, 'index'])->name('user.company.index');
+            Route::get('/view/{companyId}', [UserCompanyController::class, 'view'])->name('user.company.view');
+            Route::get('/create', [UserCompanyController::class, 'create'])->name('user.company.create');
+            Route::post('/store', [UserCompanyController::class, 'store'])->name('user.company.store');
+            Route::get('/edit/{companyId}', [UserCompanyController::class, 'edit'])->name('user.company.edit');
+            Route::put('/update', [UserCompanyController::class, 'update'])->name('user.company.update');
+            Route::post('/toggle-status/{companyId}', [UserCompanyController::class, 'toggleStatus'])->name('user.company.toggleStatus');
+            Route::delete('/delete/{companyId}', [UserCompanyController::class, 'delete'])->name('user.company.delete');
+        });
+    });
 });
 
 
