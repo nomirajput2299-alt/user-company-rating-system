@@ -107,6 +107,15 @@
                     <a href="{{ route('web.auth.showLogin') }}">Login</a>
                 </small>
             </div>
+            <!-- Back to home -->
+            <div class="text-center mt-3">
+                <small>
+                    Back to home
+                    <a href="{{ route('web.home') }}" class="text-decoration-none">
+                        <i class="bi bi-house-door-fill"></i>
+                    </a>
+                </small>
+            </div>
 
         </div>
 
@@ -121,5 +130,4 @@
     <script type="text/javascript" src="{{ asset('frontend/js/auth/register.js') }}"></script>
 
 </body>
-
 </html>

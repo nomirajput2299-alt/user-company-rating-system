@@ -59,6 +59,13 @@
                     <a href="{{ route('web.auth.showSignup') }}">Register</a>
                 </small>
             </div>
+            <!-- Back to home -->
+            <div class="text-center mt-3">
+                <small>
+                    Back to home
+                    <a href="{{ route('web.home') }}">Home</a>
+                </small>
+            </div>
         </div>
     </div>
 

@@ -56,7 +56,7 @@ class AuthController extends Controller
             }
 
             if ($user->hasRole('user')) {
-                return redirect()->route('Web.Home')->with('success', 'Login successful.');
+                return redirect()->route('web.home')->with('success', 'Login successful.');
             }
 
             // Unknown role
@@ -125,7 +125,7 @@ class AuthController extends Controller
             Auth::login($user);
 
             DB::commit();
-            return redirect()->route('Web.Home')->with('info', 'Welcome! Account successfully created now.');
+            return redirect()->route('web.home')->with('info', 'Welcome! Account successfully created now.');
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage());
@@ -142,7 +142,7 @@ class AuthController extends Controller
         try {
             if (Auth::check()) {
                 Auth::logout();
-                return redirect()->route('Web.Home')->with('success', 'Logout Successfully');
+                return redirect()->route('web.home')->with('success', 'Logout Successfully');
             }
             throw (new ErrorException('You are not login. Kindly login first.'));
         } catch (Exception $e) {

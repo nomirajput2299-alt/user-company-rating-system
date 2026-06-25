@@ -71,7 +71,7 @@ class UserCompanyController extends Controller
                     ->make(true);
             }
 
-            return view('backend.user.index');
+            return view('backend.user.company.index');
         } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }

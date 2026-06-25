@@ -1,7 +1,7 @@
 <div class="bg-dark border-end sidebar" id="sidebar-wrapper" style="width: 260px; min-height: 100vh;">
     <!-- Company Rating -->
     <div class="sidebar-heading text-white p-3 fw-bold border-bottom">
-        <a href="{{ route('Web.Home') }}" class="text-decoration-none text-white">Company Rating</a>
+        <a href="{{ route('web.home') }}" class="text-decoration-none text-white">Company Rating</a>
     </div>
 
     <div class="list-group list-group-flush">

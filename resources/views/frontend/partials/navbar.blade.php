@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
     <div class="container-fluid px-4">
-        <a class="navbar-brand fw-bold" href="{{ route('Web.Home') }}">
+        <a class="navbar-brand fw-bold" href="{{ route('web.home') }}">
             <i class="bi bi-star-fill"></i>
             Company Rating System
         </a>
@@ -16,7 +16,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Ratings</a>
+                    <a class="nav-link" href="{{ route('web.aboutUs.index') }}">About us</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('web.contactUs.create') }}">Contact us</a>
                 </li>
 
                 @auth
