@@ -1,6 +1,5 @@
 $(document).ready(function () {
-    // Validation of Register form
-    $("#editForm").validate({
+    $("#contactUsForm").validate({
         rules: {
             name: {
                 required: true,
@@ -11,20 +10,20 @@ $(document).ready(function () {
                 required: true,
                 email: true,
             },
-            initial: {
-                required: true,
-                minlength: 2,
-                maxlength: 2,
-            },
             phoneNumber: {
                 required: true,
                 minlength: 10,
                 maxlength: 15,
             },
-            city: {
+            subject: {
                 required: true,
                 minlength: 3,
                 maxlength: 20,
+            },
+            message: {
+                required: true,
+                minlength: 10,
+                maxlength: 5000,
             },
         },
         messages: {
@@ -36,18 +35,18 @@ $(document).ready(function () {
                 required: "Email is required",
                 email: "Enter a valid email",
             },
-            initial: {
-                required: "Initial is required",
-                minlength: "Initial must be at least 2 characters",
-                maxlength: "Initial must be at most 2 characters",
-            },
             phoneNumber: {
                 required: "Phone number is required",
             },
-            city: {
-                required: "City is required",
-                minlength: "City must be at least 3 characters",
-                maxlength: "City must be at least 20 characters",
+            subject: {
+                required: "Subject is required",
+                minlength: "Subject must be at least 3 characters",
+                maxlength: "Subject must be at least 20 characters",
+            },
+            message: {
+                required: "Message is required",
+                minlength: "Message must be at least 10 characters",
+                maxlength: "Message must be at least 5000 characters",
             },
         },
         errorClass: "text-danger",

@@ -4,25 +4,33 @@ use App\Http\Controllers\Backend\Admin\Company\AdminCompanyController;
 use App\Http\Controllers\Backend\Auth\AdminAuthController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\User\Comapny\UserCompanyController;
+use App\Http\Controllers\Frontend\AboutUs\AboutUsController;
 use App\Http\Controllers\Frontend\Auth\AuthController;
+use App\Http\Controllers\Frontend\ContactUs\ContactUsController;
 use App\Http\Controllers\Frontend\WebHomeController;
 use Illuminate\Support\Facades\Route;
 
 
 /*
 |--------------------------------------------------------------------------
-| Home Frontend Routes
+| Frontend Routes
 |--------------------------------------------------------------------------
 */
 
 Route::prefix('/')->group(function () {
+    // Landing Page
+    Route::get('/', [WebHomeController::class, 'index'])->name('web.home');
+
+    Route::get('/about-us', [AboutUsController::class, 'index'])->name('web.aboutUs.index');
+
     /*
     |--------------------------------------------------------------------------
-    | Home Routes
+    | ContactUs Routes
     |--------------------------------------------------------------------------
     */
-    Route::prefix('/')->group(function () {
-        Route::get('/', [WebHomeController::class, 'index'])->name('Web.Home');
+    Route::prefix('/contact-us')->group(function () {
+        Route::get('/', [ContactUsController::class, 'create'])->name('web.contactUs.create');
+        Route::post('/store', [ContactUsController::class, 'store'])->name('web.contactUs.store');
     });
 
     /*
