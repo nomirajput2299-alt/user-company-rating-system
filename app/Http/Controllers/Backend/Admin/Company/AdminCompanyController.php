@@ -126,7 +126,7 @@ class AdminCompanyController extends Controller
             // Check that selected company is valid or not
             $company = Company::find($companyId);
             if (!$company) {
-                throw new Exception("Invalid Company. Kindly try again with valid Company");
+                throw new Exception('Invalid Company. Kindly try again with valid Company');
             }
 
             return view('backend.admin.company.common.show')->with([
