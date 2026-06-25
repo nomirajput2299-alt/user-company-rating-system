@@ -35,5 +35,14 @@
         {{ request()->routeIs('#') ? 'active' : 'bg-dark' }}">
             <i class="bi bi-star me-2"></i> Ratings
         </a>
+
+        @role('admin')
+         <!-- Feedback -->
+            <a href="{{ route('admin.feedback.index') }}"
+                class="list-group-item list-group-item-action text-white
+             {{ request()->routeIs('admin.feedback.index') ? 'active' : 'bg-dark' }}">
+                <i class="bi bi-people me-2"></i> Feedback
+            </a>
+        @endrole
     </div>
 </div>

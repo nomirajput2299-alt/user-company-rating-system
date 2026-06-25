@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\Admin\Company\AdminCompanyController;
+use App\Http\Controllers\Backend\Admin\Feedback\AdminFeedbackController;
 use App\Http\Controllers\Backend\Auth\AdminAuthController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\User\Comapny\UserCompanyController;
@@ -105,6 +106,16 @@ Route::middleware(['auth', 'user.status'])->prefix('/back-end')->group(function 
             Route::put('/update', [AdminCompanyController::class, 'update'])->name('admin.company.update');
             Route::post('/toggle-status/{companyId}', [AdminCompanyController::class, 'toggleStatus'])->name('admin.company.toggleStatus');
             Route::delete('/delete/{companyId}', [AdminCompanyController::class, 'delete'])->name('admin.company.delete');
+        });
+        /*
+        |--------------------------------------------------------------------------
+        | feedback Routes
+        |--------------------------------------------------------------------------
+        */
+        Route::prefix('/feedback')->group(function () {
+            Route::get('/index', [AdminFeedbackController::class, 'index'])->name('admin.feedback.index');
+            Route::get('/view/{feedbackId}', [AdminFeedbackController::class, 'view'])->name('admin.feedback.view');
+            Route::delete('/delete/{feedbackId}', [AdminFeedbackController::class, 'delete'])->name('admin.feedback.delete');
         });
     });
 
